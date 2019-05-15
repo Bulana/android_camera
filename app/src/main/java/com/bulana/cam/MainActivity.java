@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void scanImage(View view) {
 
-        //intent to start camera as app starts up
         Intent capturedImageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File imageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
 
