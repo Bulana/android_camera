@@ -7,6 +7,8 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import java.io.File;
 
@@ -18,14 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //intent to start camera as app starts up
-        Intent capturedImageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File imageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-
-        imageFromDirectory = new File(imageDirectory, "CameraContentDemo.jpeg");
-        capturedImageIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFromDirectory));
-        startActivityForResult(capturedImageIntent, CONTENT_REQUEST);
     }
 
     @Override
@@ -39,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+    }
+
+    public void scanImage(View view) {
+
+        //intent to start camera as app starts up
+        Intent capturedImageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File imageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+
+        imageFromDirectory = new File(imageDirectory, "CameraContentDemo.jpeg");
+        capturedImageIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFromDirectory));
+        startActivityForResult(capturedImageIntent, CONTENT_REQUEST);
 
     }
 }
